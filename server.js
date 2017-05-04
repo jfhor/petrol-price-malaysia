@@ -35,6 +35,14 @@ app.get("/get-petrol-price", function(req, res){
 	});
 });
 
+app.get('/', function(req, res) {
+    res.json({});
+});
+
+app.get('/*', function(req, res) {
+    res.redirect('/');
+});
+
 var port = process.env.PORT || "8080";
 var hostname = process.env.IP || "0.0.0.0";
 app.listen(port, hostname);
