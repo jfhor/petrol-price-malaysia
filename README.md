@@ -1,2 +1,4 @@
 # petrol-price-malaysia
-simple project writen to scrap information from http://petrolpricemalaysia.info/
+Simple project writen to scrape information from http://petrolpricemalaysia.info/
+
+Check the result here: https://petrol-price-malaysia-jfhor.c9users.io/get-petrol-price
