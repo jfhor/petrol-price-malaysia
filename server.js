@@ -3,10 +3,10 @@ var request = require("request");
 var cheerio = require('cheerio');
 var app     = express();
 
-app.get("/get-price", function(req, res){
-	url = "http://petrolpricemalaysia.info/";
+app.get("/get-petrol-price", function(req, res){
+	var url = "http://petrolpricemalaysia.info/";
 
-	request( url, function(error, response, html) {
+	request(url, function(error, response, html) {
 		if(!error){
 			var $ = cheerio.load(html);
 
@@ -35,6 +35,8 @@ app.get("/get-price", function(req, res){
 	});
 });
 
-app.listen("8080")
+var port = process.env.PORT || "8080";
+var hostname = process.env.IP || "0.0.0.0";
+app.listen(port, hostname);
 
-console.log("Server started.");
+console.log("Server started. Server listening at " + hostname + ":" + port);
