@@ -1,0 +1,12 @@
+{
+  "name"         : "petrol-price-malaysia",
+  "version"      : "0.0.1",
+  "description"  : "Simple project writen to scrape information from http://petrolpricemalaysia.info/",
+  "main"         : "server.js",
+  "author"       : "Jin Foong",
+  "dependencies" : {
+    "express"    : "latest",
+    "request"    : "latest",
+	  "cheerio"    : "latest"
+  }
+}
