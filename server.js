@@ -49,10 +49,9 @@ app.get('/*', function(req, res) {
     res.redirect('/');
 });
 
-// env.NODE_PORT : openshift
-// process.env.PORT : C9
-var port = env.NODE_PORT || process.env.PORT || "8080";
-var hostname = env.NODE_IP ||process.env.IP || "0.0.0.0";
+// use openshit / c9 system variable for hosting
+var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
+var hostname = process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "localhost";
 app.listen(port, hostname);
 
 console.log("Server started. Server listening at " + hostname + ":" + port);
