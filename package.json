@@ -3,6 +3,9 @@
   "version"      : "0.0.1",
   "description"  : "Simple project writen to scrape information from http://petrolpricemalaysia.info/",
   "main"         : "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "author"       : "Jin Foong",
   "dependencies" : {
     "express"    : "latest",
