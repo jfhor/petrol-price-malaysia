@@ -35,6 +35,12 @@ app.get("/get-petrol-price", function(req, res){
 	});
 });
 
+// required by Openshift for health checking
+app.get('/health', function(req, res) {
+    res.writeHead(200);
+    res.end();
+});
+
 app.get('/', function(req, res) {
     res.json({});
 });
@@ -43,8 +49,10 @@ app.get('/*', function(req, res) {
     res.redirect('/');
 });
 
-var port = process.env.PORT || "8080";
-var hostname = process.env.IP || "0.0.0.0";
+// env.NODE_PORT : openshift
+// process.env.PORT : C9
+var port = env.NODE_PORT || process.env.PORT || "8080";
+var hostname = env.NODE_IP ||process.env.IP || "0.0.0.0";
 app.listen(port, hostname);
 
 console.log("Server started. Server listening at " + hostname + ":" + port);
