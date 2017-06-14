@@ -3,7 +3,7 @@ var request = require("request");
 var cheerio = require('cheerio');
 var app     = express();
 
-app.get("/get-petrol-price", function(req, res){
+app.get("/prices", function(req, res){
 	var url = "http://petrolpricemalaysia.info/";
 
 	request(url, function(error, response, html) {
@@ -11,7 +11,7 @@ app.get("/get-petrol-price", function(req, res){
 			var $ = cheerio.load(html);
 
 			var response = { prices: [] };
-			var title, price, subtitle;
+			// var title, price, subtitle;
 			// var obj = { title : "", price : "", subtitle : "" };
 
 			$("div#rpt_pricr").filter(function(){
@@ -22,6 +22,7 @@ app.get("/get-petrol-price", function(req, res){
 					obj.title = $(item).children("div").first().text();
 					obj.price = $(item).children("div").last().children().first().text();
 					obj.subtitle = $(item).children("div").last().children().last().text();
+					obj.key = obj.title.toLowerCase().replace(/\s/g,"");
 
 					response.prices.push(obj);
 				});
